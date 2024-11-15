@@ -11,6 +11,7 @@ import { PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { auth } from "./auth/resource";
 import { data } from "./data/resource";
 import { appConfigFunction } from "./function/resource";
+import { appConfigFunctionV2 } from "./functionv2/resource";
 
 /**
  * @see https://docs.amplify.aws/react/build-a-backend/ to add storage, functions, and more
@@ -19,6 +20,7 @@ const backend = defineBackend({
   auth,
   data,
   appConfigFunction,
+  appConfigFunctionV2,
 });
 
 const appConfigStack = backend.createStack("app-config");
@@ -82,7 +84,26 @@ backend.appConfigFunction.addEnvironment(
 // Add AppConfig permissions to the Lambda function
 backend.appConfigFunction.resources.lambda.addToRolePolicy(
   new PolicyStatement({
-    actions: ["appconfig:*"],
+    actions: [
+      "appconfig:GetLatestConfiguration",
+      "appconfig:StartConfigurationSession",
+    ],
+    resources: ["*"],
+  })
+);
+
+// ------------------------------------------------------------
+
+backend.appConfigFunctionV2.addEnvironment("ENV", env.name ?? "");
+backend.appConfigFunctionV2.addEnvironment("APP", app.name ?? "");
+backend.appConfigFunctionV2.addEnvironment("CONFIG", config.name ?? "");
+
+backend.appConfigFunctionV2.resources.lambda.addToRolePolicy(
+  new PolicyStatement({
+    actions: [
+      "appconfig:GetLatestConfiguration",
+      "appconfig:StartConfigurationSession",
+    ],
     resources: ["*"],
   })
 );
