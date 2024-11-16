@@ -1,58 +1,55 @@
 import {
-  Authenticator,
   Button,
+  Card,
   Flex,
-  Loader,
-  TextAreaField,
+  Heading,
   View,
+  useTheme,
 } from "@aws-amplify/ui-react";
-
-import "@aws-amplify/ui-react/styles.css";
-import * as React from "react";
-import ReactMarkdown from "react-markdown";
-import { useAIGeneration } from "./client";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import "./App.css";
+import RecipeGenerator from "./RecipeGenerator";
+import Conversation from "./convo";
 
 export default function App() {
-  const [description, setDescription] = React.useState("");
-  const [{ data, isLoading }, generateRecipe] =
-    useAIGeneration("generateRecipe");
-
-  const handleClick = async () => {
-    generateRecipe({ description });
-  };
+  const { tokens } = useTheme();
+  const navigate = useNavigate();
 
   return (
-    <Authenticator>
-      <Flex direction="column">
-        <Flex direction="row">
-          <TextAreaField
-            autoResize
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            label="Description"
-          />
-          <Button onClick={handleClick}>Generate recipe</Button>
+    <View className="ai-container">
+      <Card variation="elevated">
+        <Flex direction="column" gap={tokens.space.medium}>
+          <Heading level={1}>AI Assistant Demo</Heading>
+
+          <Flex
+            direction="row"
+            gap={tokens.space.small}
+            justifyContent="center"
+          >
+            <Button
+              variation="primary"
+              onClick={() => navigate("/chat")}
+              backgroundColor={tokens.colors.teal[60]}
+            >
+              Chat Assistant
+            </Button>
+            <Button
+              variation="primary"
+              onClick={() => navigate("/recipe")}
+              backgroundColor={tokens.colors.teal[60]}
+            >
+              Recipe Generator
+            </Button>
+          </Flex>
         </Flex>
-        {isLoading ? (
-          <Loader variation="linear" />
-        ) : (
-          <View className="recipe-content">
-            {data?.name && <ReactMarkdown>{`# ${data.name}`}</ReactMarkdown>}
-            {data?.ingredients && (
-              <ReactMarkdown>
-                {`## Ingredients\n${data.ingredients
-                  .map((ingredient) => `- ${ingredient}`)
-                  .join("\n")}`}
-              </ReactMarkdown>
-            )}
-            {data?.instructions && (
-              <ReactMarkdown>
-                {`## Instructions\n${data.instructions}`}
-              </ReactMarkdown>
-            )}
-          </View>
-        )}
-      </Flex>
-    </Authenticator>
+      </Card>
+
+      <View marginTop={tokens.space.large}>
+        <Routes>
+          <Route path="/chat" element={<Conversation />} />
+          <Route path="/recipe" element={<RecipeGenerator />} />
+        </Routes>
+      </View>
+    </View>
   );
 }
