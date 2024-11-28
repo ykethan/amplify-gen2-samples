@@ -17,6 +17,7 @@ const crossRegionStack = new Stack(backend.stack, "useast2stack", {
   env: {
     region: "us-east-2",
   },
+  crossRegionReferences: true,
 });
 
 // Reference the function called testFunction in the us-east-2 region
