@@ -11,5 +11,5 @@ Testing custom function that is used to call the AppSync API using Python as run
 
 ### Docker build
 
-`docker-function` is the custom function that is used to call the AppSync API. used bundling to locally build the function and then deployed to AWS.
+`custom-function-docker` is the custom function that is used to call the AppSync API. used bundling to locally build the function and then deployed to AWS.
 
