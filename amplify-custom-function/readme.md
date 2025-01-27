@@ -13,3 +13,4 @@ Testing custom function that is used to call the AppSync API using Python as run
 
 `custom-function-docker` is the custom function that is used to call the AppSync API. Uses docker to build the function and then deployed to AWS.
 
+Will need a custom image to build the function on amplify console, we can use `aws/codebuild/amazonlinux-x86_64-standard:5.0`.
