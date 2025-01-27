@@ -1,0 +1,7 @@
+## Amplify Custom Function
+
+Testing custom function that is used to call the AppSync API using Python as runtime.
+
+### Non docker build
+
+custom-python-function-api is the custom function that is used to call the AppSync API. used bundling to locally build the function and then deployed to AWS.
