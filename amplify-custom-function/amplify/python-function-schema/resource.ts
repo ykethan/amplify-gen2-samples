@@ -7,9 +7,9 @@ import { fileURLToPath } from "node:url";
 
 const functionDir = path.dirname(fileURLToPath(import.meta.url));
 
-export const customAPIFunction = defineFunction(
+export const pythonFunctionSchema = defineFunction(
   (scope) =>
-    new Function(scope, "custom-api-function", {
+    new Function(scope, "python-function-schema", {
       handler: "index.handler",
       runtime: Runtime.PYTHON_3_9, // or any other python version
       timeout: Duration.seconds(20), //  default is 3 seconds

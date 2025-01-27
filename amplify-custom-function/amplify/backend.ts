@@ -1,8 +1,9 @@
 import { defineBackend } from "@aws-amplify/backend";
 
 import { auth } from "./auth/resource";
-import { sayHelloFunctionHandler } from "./custom-python-function-api/resource";
+import { customAPIFunction } from "./custom-python-function-api/resource";
 import { data } from "./data/resource";
+import { pythonFunctionSchema } from "./python-function-schema/resource";
 
 /**
  * @see https://docs.amplify.aws/react/build-a-backend/ to add storage, functions, and more
@@ -10,7 +11,8 @@ import { data } from "./data/resource";
 const backend = defineBackend({
   auth,
   data,
-  sayHelloFunctionHandler,
+  customAPIFunction,
+  pythonFunctionSchema,
 });
 
 const env = {
@@ -18,5 +20,6 @@ const env = {
     APPSYNC_API_ENDPOINT: backend.data.graphqlUrl,
   },
 };
-backend.sayHelloFunctionHandler.resources.cfnResources.cfnFunction.environment =
+backend.customAPIFunction.resources.cfnResources.cfnFunction.environment = env;
+backend.pythonFunctionSchema.resources.cfnResources.cfnFunction.environment =
   env;

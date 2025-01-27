@@ -1,5 +1,6 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
-import { sayHelloFunctionHandler } from "../custom-python-function-api/resource";
+import { customAPIFunction } from "../custom-python-function-api/resource";
+import { pythonFunctionSchema } from "../python-function-schema/resource";
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -15,7 +16,10 @@ const schema = a
       })
       .authorization((allow) => [allow.guest()]),
   })
-  .authorization((allow) => [allow.resource(sayHelloFunctionHandler)]);
+  .authorization((allow) => [
+    allow.resource(customAPIFunction),
+    allow.resource(pythonFunctionSchema),
+  ]);
 
 export type Schema = ClientSchema<typeof schema>;
 
