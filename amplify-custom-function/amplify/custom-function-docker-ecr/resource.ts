@@ -1,7 +1,13 @@
 import { defineFunction } from "@aws-amplify/backend";
 import { Duration } from "aws-cdk-lib";
 import { Repository } from "aws-cdk-lib/aws-ecr";
-import { Code, Function, Handler, Runtime } from "aws-cdk-lib/aws-lambda";
+import {
+  Architecture,
+  Code,
+  Function,
+  Handler,
+  Runtime,
+} from "aws-cdk-lib/aws-lambda";
 
 export const dockerFunctionecr = defineFunction(
   (scope) =>
@@ -9,6 +15,7 @@ export const dockerFunctionecr = defineFunction(
       handler: Handler.FROM_IMAGE,
       runtime: Runtime.FROM_IMAGE,
       timeout: Duration.seconds(20),
+      architecture: Architecture.ARM_64,
       environment: {
         Hello: "there",
       },
@@ -20,7 +27,7 @@ export const dockerFunctionecr = defineFunction(
           "amplify/custom-function"
         ),
         {
-          tagOrDigest: "latest",
+          tagOrDigest: "new",
         }
       ),
     }),
