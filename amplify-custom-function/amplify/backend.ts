@@ -1,6 +1,7 @@
 import { defineBackend } from "@aws-amplify/backend";
 
 import { auth } from "./auth/resource";
+import { dockerFunctionecr } from "./custom-function-docker-ecr/resource";
 import { dockerFunction } from "./custom-function-docker/resource";
 import { customAPIFunction } from "./custom-python-function-api/resource";
 import { data } from "./data/resource";
@@ -14,6 +15,7 @@ const backend = defineBackend({
   customAPIFunction,
   pythonFunctionSchema,
   dockerFunction,
+  dockerFunctionecr,
 });
 
 const env = {
@@ -25,3 +27,13 @@ backend.customAPIFunction.resources.cfnResources.cfnFunction.environment = env;
 backend.pythonFunctionSchema.resources.cfnResources.cfnFunction.environment =
   env;
 backend.dockerFunction.resources.cfnResources.cfnFunction.environment = env;
+
+const cfnFn = backend.dockerFunctionecr.resources.cfnResources.cfnFunction;
+
+cfnFn.addPropertyOverride("Environment.Variables", {
+  // @ts-expect-error
+  ...((cfnFn.environment?.variables || {}) as Record<string, string>),
+  KEY3: "value3", // Add new vars
+  KEY4: "value4",
+  ba1c: "test1",
+});
