@@ -30,5 +30,8 @@ export const dockerFunctionecr = defineFunction(
           tagOrDigest: "new",
         }
       ),
-    })
+    }),
+  {
+    resourceGroupName: "data",
+  }
 );
