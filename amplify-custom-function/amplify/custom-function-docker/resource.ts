@@ -23,8 +23,5 @@ export const dockerFunction = defineFunction(
           ],
         },
       }),
-    }),
-  {
-    resourceGroupName: "data",
-  }
+    })
 );
