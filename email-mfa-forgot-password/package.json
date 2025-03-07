@@ -1,0 +1,49 @@
+{
+  "name": "reactapp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@aws-amplify/predictions": "^6.1.44",
+    "@aws-amplify/ui-react": "^0.0.0-email-mfa-bfd27c5-20250304205419",
+    "@aws-amplify/ui-react-ai": "^1.1.0",
+    "@aws-amplify/ui-react-storage": "^3.7.2",
+    "@aws-sdk/client-cognito-identity-provider": "^3.710.0",
+    "@aws-sdk/client-ses": "^3.721.0",
+    "@dotenvx/dotenvx": "^1.36.0",
+    "aws-amplify": "^6.13.0",
+    "dotenv": "^16.4.7",
+    "dotenv-cli": "^8.0.0",
+    "onnxruntime-node": "^1.20.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1"
+  },
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.14.1",
+    "@aws-amplify/backend-cli": "^1.4.11",
+    "@eslint/js": "^9.16.0",
+    "@types/aws-lambda": "^8.10.147",
+    "@types/react": "^18.3.16",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "aws-cdk": "^2.173.0",
+    "aws-cdk-lib": "^2.173.0",
+    "constructs": "^10.4.2",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.16.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.13.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0",
+    "vite": "^6.0.3"
+  }
+}
