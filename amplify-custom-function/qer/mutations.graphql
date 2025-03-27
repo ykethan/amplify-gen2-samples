@@ -1,0 +1,85 @@
+# this is an auto generated file. This will be overwritten
+
+mutation CreateProducts(
+  $condition: ModelProductsConditionInput
+  $input: CreateProductsInput!
+) {
+  createProducts(condition: $condition, input: $input) {
+    Name
+    Prefix
+    SearchName
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+mutation CreateTodo(
+  $condition: ModelTodoConditionInput
+  $input: CreateTodoInput!
+) {
+  createTodo(condition: $condition, input: $input) {
+    content
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+mutation DeleteProducts(
+  $condition: ModelProductsConditionInput
+  $input: DeleteProductsInput!
+) {
+  deleteProducts(condition: $condition, input: $input) {
+    Name
+    Prefix
+    SearchName
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+mutation DeleteTodo(
+  $condition: ModelTodoConditionInput
+  $input: DeleteTodoInput!
+) {
+  deleteTodo(condition: $condition, input: $input) {
+    content
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+mutation UpdateProducts(
+  $condition: ModelProductsConditionInput
+  $input: UpdateProductsInput!
+) {
+  updateProducts(condition: $condition, input: $input) {
+    Name
+    Prefix
+    SearchName
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+mutation UpdateTodo(
+  $condition: ModelTodoConditionInput
+  $input: UpdateTodoInput!
+) {
+  updateTodo(condition: $condition, input: $input) {
+    content
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}

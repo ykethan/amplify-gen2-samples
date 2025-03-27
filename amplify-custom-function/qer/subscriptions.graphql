@@ -1,0 +1,67 @@
+# this is an auto generated file. This will be overwritten
+
+subscription OnCreateProducts($filter: ModelSubscriptionProductsFilterInput) {
+  onCreateProducts(filter: $filter) {
+    Name
+    Prefix
+    SearchName
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnCreateTodo($filter: ModelSubscriptionTodoFilterInput) {
+  onCreateTodo(filter: $filter) {
+    content
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnDeleteProducts($filter: ModelSubscriptionProductsFilterInput) {
+  onDeleteProducts(filter: $filter) {
+    Name
+    Prefix
+    SearchName
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
+  onDeleteTodo(filter: $filter) {
+    content
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnUpdateProducts($filter: ModelSubscriptionProductsFilterInput) {
+  onUpdateProducts(filter: $filter) {
+    Name
+    Prefix
+    SearchName
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnUpdateTodo($filter: ModelSubscriptionTodoFilterInput) {
+  onUpdateTodo(filter: $filter) {
+    content
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}

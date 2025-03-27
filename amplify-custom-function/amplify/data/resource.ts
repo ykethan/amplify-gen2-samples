@@ -1,5 +1,6 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 import { dockerFunction } from "../custom-function-docker/resource";
+import { customAPIMutationFunction } from "../custom-python-function-api-mutation/resource";
 import { customAPIFunction } from "../custom-python-function-api/resource";
 import { pythonFunctionSchema } from "../python-function-schema/resource";
 /*== STEP 1 ===============================================================
@@ -15,11 +16,19 @@ const schema = a
         content: a.string(),
       })
       .authorization((allow) => [allow.guest()]),
+    Products: a
+      .model({
+        Name: a.string(),
+        SearchName: a.string(),
+        Prefix: a.string(),
+      })
+      .authorization((allow) => [allow.guest()]),
   })
   .authorization((allow) => [
     allow.resource(customAPIFunction),
     allow.resource(pythonFunctionSchema),
     allow.resource(dockerFunction),
+    allow.resource(customAPIMutationFunction),
   ]);
 
 export type Schema = ClientSchema<typeof schema>;

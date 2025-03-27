@@ -1,0 +1,61 @@
+# this is an auto generated file. This will be overwritten
+
+query GetProducts($id: ID!) {
+  getProducts(id: $id) {
+    Name
+    Prefix
+    SearchName
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+query GetTodo($id: ID!) {
+  getTodo(id: $id) {
+    content
+    createdAt
+    id
+    updatedAt
+    __typename
+  }
+}
+
+query ListProducts(
+  $filter: ModelProductsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      Name
+      Prefix
+      SearchName
+      createdAt
+      id
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query ListTodos(
+  $filter: ModelTodoFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      content
+      createdAt
+      id
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
